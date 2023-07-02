@@ -1,0 +1,134 @@
+\documentclass[uplatex,a4paper,dvipdfmx]{jsarticle}
+
+
+\usepackage{amsfonts, amsmath, amsthm, amssymb}
+\usepackage{mathtools}
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{(\theenumi) }
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+%% Theorems
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+%% Some operators
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\CHom}{\mathcal{H}\!\mathit{om}}
+\DeclareMathOperator{\CTor}{\mathcal{T}\!\mathit{or}}
+\DeclareMathOperator{\Auteq}{\mathrm{Auteq}}
+\DeclareMathOperator{\Cone}{\mathrm{Cone}}
+\DeclareMathOperator{\ev}{\mathrm{ev}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\depth}{\mathrm{depth}}
+\DeclareMathOperator{\Pic}{\mathrm{Pic}}
+\DeclareMathOperator{\MCG}{\mathrm{MCG}}
+\DeclareMathOperator{\PMCG}{\mathrm{PMCG}}
+\DeclareMathOperator{\RHom}{\mathrm{RHom}}
+\DeclareMathOperator{\Ker}{\mathrm{Ker}}
+\DeclareMathOperator{\Image}{\mathrm{Im}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\Perf}{\mathrm{Perf}}
+\DeclareMathOperator{\NS}{\mathrm{NS}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\Hilb}{\mathrm{Hilb}}
+\DeclareMathOperator{\res}{\mathrm{res}}
+\DeclareMathOperator{\Ch}{\mathrm{Ch}}
+\DeclareMathOperator{\coh}{\mathrm{coh}}
+
+
+\newcommand{\nc}{\newcommand}
+
+%% Calligraphic letters
+
+\nc{\cF}{{\mathcal{F}}}
+\nc{\cG}{{\mathcal{G}}}
+\nc{\cH}{{\mathcal{H}}}
+
+\nc{\cO}{{\mathcal{O}}}
+\nc{\cU}{{\mathcal{U}}}
+\nc{\cW}{{\mathcal{W}}}
+
+%% Blackboard letters
+\nc{\bA}{{\mathbb{A}}}
+\nc{\bC}{{\mathbb{C}}}
+\nc{\bP}{{\mathbb{P}}}
+\nc{\bQ}{{\mathbb{Q}}}
+\nc{\bZ}{{\mathbb{Z}}}
+
+
+\title{代数多様体の導来圏の半捻り関手}
+\author{荒井 勇人}
+\date{\today}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	代数多様体$X$の連接層の導来圏$D^b(X)$の自己同値を構成する重要な手法のひとつが、SeidelとThomasにより導入された球面対象$E \in D^b(X)$に沿う捻り関手$T_E \in \mathrm{Auteq} D^b(X)$である。これはホモロジー的ミラー対称性のもとでシンプレクティック多様体上のLagrange球面に沿うDehn捻りに対応する。
+
+	本講演では代数多様体の平坦族$X \to T$について、適切な設定のもと$D^b(X)$上の捻り関手をファイバー$X_t$の導来圏の自己同値に『制限』できるという結果について紹介する。
+	特にその具体例として楕円曲面と可約ファイバーの場合を考えることで、楕円曲面の自己同値群を穴あきトーラスの写像類群の言葉で記述できることを説明する。
+	さらにこれらの具体例から、『制限』によって得られる導来圏の自己同値が実曲面上の弧(arc)に沿った半捻り(half twist)のミラー対称性による類似物であると考えられること、およびこの現象に関連した今後の展望についても述べたい。
+\end{abstract}
+
+\section{導入}
+\subsection{代数多様体の導来圏と自己同値群}
+$X$を$\bC$上の代数多様体とし、$X$上の連接層のなすアーベル圏を$\coh X$、その有界な（コチェイン）複体のなすアーベル圏を$\Ch^b(\coh X)$とする。
+複体の間の射$f \colon E \to F$は、複体のコホモロジーに誘導する射$H^n(f) \colon H^n(E) \to H^n(F)$が全ての$n \in \bZ$について同型であるとき擬同型と呼ばれる。
+$X$の導来圏$D^b(X)$とは、$\Ch(\coh X)$を擬同型全体で局所化して得られる圏であり、自然に$\bC$線形な三角圏の構造を持つ。
+また$D^b(X)$の自己同値群$\Auteq D^b(X)$を、$\bC$線形で三角圏の構造を保つような$D^b(X)$の自己同値関手の同型類がなす群とする。
+$D^b(X)$の自己同値として、$X$の自己同型$f$による連接層の引き戻し$f^*$、$X$上の直線束$L$によるテンソル積$(-)\otimes L$、および三角圏のシフト関手$(-)[1]$が常に存在し、これらの生成する$\Auteq D^b(X)$の部分群
+\begin{equation}
+	A(X) \coloneq \Aut(X) \ltimes \Pic(X) \times \bZ[1]
+\end{equation}
+の元は標準的な自己同値と呼ばれる。
+自己同値群についてのもっとも基本的な結果は次のBondalとOrlovによる定理である。
+\begin{theorem}[\cite{MR1818984}]
+	$X$を非特異射影多様体とし、$X$の標準束$\omega_X$またはその双対束$\omega_X^\vee$が豊富な直線束だと仮定する。
+	このとき$A(X) = \Auteq D^b(X)$である。
+\end{theorem}
+この結果により、非自明な包含関係$A(X) \subsetneq \Auteq D^b(X)$が生じうる一番単純な状況は$X$が楕円曲線の場合となる。
+このときの$\Auteq D^b(X)$はOrlovによるアーベル多様体についての結果を適用すると以下のようになる。
+\begin{theorem}[\cite{MR1921811}]
+	$X$を楕円曲線とすると、以下の完全列が存在する。
+	\begin{equation}\label{eq:autoequivalence_of_elliptic_curve}
+		1 \to \Aut{X} \ltimes \Pic^{0}(X)\times \bZ[2] \to \Auteq{D^b(X)} \xrightarrow{\theta} \SL(2, \bZ) \to 1
+	\end{equation}
+	ここで$\theta$は偶数次のコホモロジー群$H^0(X, \bZ) \oplus H^0(X, \bZ) \cong \bZ^2$への作用で与えられる。
+\end{theorem}
+これにより$A(X)$の像を計算すると、$\theta((-)[1]) = \begin{pmatrix}
+		-1 & 0  \\
+		0  & -1 \\
+	\end{pmatrix}$かつ$L \in \Pic(X)$については
+\begin{equation}
+	\theta((-) \otimes L) =
+	\begin{pmatrix}
+		1      & 0 \\
+		\deg L & 1 \\
+	\end{pmatrix}
+\end{equation}
+となるため、$\theta(A(X)) \subsetneq \SL(2, \bZ)$従って$A(X) \subsetneq \Auteq D^b(X)$がわかる。
+
+\subsection{Fourier--向井変換と捻り関手}
+\section{捻り関手の制限}
+\section{小平ファイバーのミラー対称性}
+\section{楕円曲面の自己同値群}
+
+
+\bibliographystyle{amsalpha}
+\bibliography{half_twist}
+\end{document}

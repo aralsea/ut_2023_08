@@ -1,0 +1,20 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{BO01}
+
+\bibitem[BO01]{MR1818984}
+Alexei Bondal and Dmitri Orlov, \emph{Reconstruction of a variety from the
+  derived category and groups of autoequivalences}, Compositio Math.
+  \textbf{125} (2001), no.~3, 327--344. \MR{1818984}
+
+\bibitem[Orl02]{MR1921811}
+D.~O. Orlov, \emph{Derived categories of coherent sheaves on abelian varieties
+  and equivalences between them}, Izv. Ross. Akad. Nauk Ser. Mat. \textbf{66}
+  (2002), no.~3, 131--158. \MR{1921811}
+
+\end{thebibliography}
