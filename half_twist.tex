@@ -1,14 +1,13 @@
 \documentclass[uplatex,a4paper,dvipdfmx]{jsarticle}
-
-
 \usepackage{amsfonts, amsmath, amsthm, amssymb}
 \usepackage{mathtools}
+\usepackage{tikz-cd}
+
 \renewcommand{\theenumi}{\arabic{enumi}}
 \renewcommand{\labelenumi}{(\theenumi) }
 \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
 %% Theorems
 \theoremstyle{plain}
-
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -80,9 +79,7 @@
 \begin{abstract}
 	代数多様体$X$の連接層の導来圏$D^b(X)$の自己同値を構成する重要な手法のひとつが、SeidelとThomasにより導入された球面対象$E \in D^b(X)$に沿う捻り関手$T_E \in \mathrm{Auteq} D^b(X)$である。これはホモロジー的ミラー対称性のもとでシンプレクティック多様体上のLagrange球面に沿うDehn捻りに対応する。
 
-	本講演では代数多様体の平坦族$X \to T$について、適切な設定のもと$D^b(X)$上の捻り関手をファイバー$X_t$の導来圏の自己同値に『制限』できるという結果について紹介する。
-	特にその具体例として楕円曲面と可約ファイバーの場合を考えることで、楕円曲面の自己同値群を穴あきトーラスの写像類群の言葉で記述できることを説明する。
-	さらにこれらの具体例から、『制限』によって得られる導来圏の自己同値が実曲面上の弧(arc)に沿った半捻り(half twist)のミラー対称性による類似物であると考えられること、およびこの現象に関連した今後の展望についても述べたい。
+	本稿では捻り関手の変種として、ミラー対称性のもとで穴あき曲面の半捻りに対応する$D^b(X)$の自己同値（半捻り関手）を構成し、それを用いて楕円曲面$S$の導来圏の自己同値群$\Auteq D^b(S)$の構造を調べる。
 \end{abstract}
 
 \section{導入}
@@ -91,7 +88,7 @@ $X$を$\bC$上の代数多様体とし、$X$上の連接層のなすアーベル
 複体の間の射$f \colon E \to F$は、複体のコホモロジーに誘導する射$H^n(f) \colon H^n(E) \to H^n(F)$が全ての$n \in \bZ$について同型であるとき擬同型と呼ばれる。
 $X$の導来圏$D^b(X)$とは、$\Ch(\coh X)$を擬同型全体で局所化して得られる圏であり、自然に$\bC$線形な三角圏の構造を持つ。
 また$D^b(X)$の自己同値群$\Auteq D^b(X)$を、$\bC$線形で三角圏の構造を保つような$D^b(X)$の自己同値関手の同型類がなす群とする。
-$D^b(X)$の自己同値として、$X$の自己同型$f$による連接層の引き戻し$f^*$、$X$上の直線束$L$によるテンソル積$(-)\otimes L$、および三角圏のシフト関手$(-)[1]$が常に存在し、これらの生成する$\Auteq D^b(X)$の部分群
+$D^b(X)$の自己同値として、$X$の自己同型$f$による逆像$f^*$、$X$上の直線束$L$によるテンソル積$(-)\otimes L$、および三角圏のシフト関手$(-)[1]$が常に存在し、これらの生成する$\Auteq D^b(X)$の部分群
 \begin{equation}
 	A(X) \coloneq \Aut(X) \ltimes \Pic(X) \times \bZ[1]
 \end{equation}
@@ -125,20 +122,101 @@ $D^b(X)$の自己同値として、$X$の自己同型$f$による連接層の引
 
 
 \subsection{Fourier--向井変換と捻り関手}
-多様体の導来圏の間の関手を構成する一般的な方法であるFourier--向井変換と、自己同値の重要な構成法である捻り関手について説明する。
-
+Fourier--向井変換とは、積分核と呼ばれる$X \times Y$の導来圏の対象$P \in D^b(X \times Y)$から構成される関手$\Phi^P =\Phi^P_{X \to Y}\colon D^b(X) \to D^b(Y)$である。
 $X, Y$を非特異射影多様体とし、$p_X \colon X\times Y \to X, p_Y \colon X \times Y \to Y$を射影とする。
-このとき、$D^b(X \times Y)$の対象$P$をとるごとに関手$\Phi^P_{X \to Y}$
+このとき、$P \in D^b(X \times Y)$に対し関手
 \begin{equation}
-	\Phi^P_{X \to Y}(-) \coloneqq p_{Y*}(p_X^*(-) \otimes P)\colon D^b(X) \to D^b(Y)
+	\Phi^P_{X \to Y} \colon D^b(X) \xrightarrow{p_X^*} D^b(X \times Y) \xrightarrow{ - \otimes P} D^b(X \times Y) \xrightarrow{p_{Y*}} D^b(Y)
 \end{equation}
+を$P$を積分核とするFourier--向井変換と呼ぶ。
+ここで$p_X^*, p_{Y*}, - \otimes P$はそれぞれ逆像、順像、テンソル積（の導来関手）を意味する。
+
+以下の定理より、Fourier--向井変換は導来圏の間の関手を調べる上で基本的な道具となる。
+\begin{theorem}[\cite{MR1465519}]
+	$X, Y$を非特異射影多様体とし、$\Phi \colon D^b(X) \to D^b(Y)$
+\end{theorem}
 \section{小平ファイバーのミラー対称性と写像類群}
+楕円曲面$\pi \colon S \to C$の特異ファイバーとして現れうる曲線は小平とNeronによりADE型のアファインDynkin図形を用いて分類されている。
+これらの曲線を小平ファイバーと呼ぶ。
+例えば$\rm{I}_n$型と呼ばれる曲線は$n$本の$\bP^1$が$n$角形のかたちに交わってできる特異曲線であり、アファイン$A_n$型Dynkin図形に対応する。
 
+
+
+$Y_n$を$\rm{I}_n$型（$n \geq 2$）の小平ファイバーとすると、そのミラー多様体は$n$点穴あきトーラス$T_n$であることが\cite{MR3663596}により示されている。
+すなわち以下が成り立つ。
+\begin{theorem}\cite{MR3663596}
+	$\cW(T_n)$を$T_n$の巻深谷圏とすると、$\bC$線形三角圏の同値$D^b(Y_n) \cong D^b(\cW(T_n))$が存在する。
+\end{theorem}
+これにより、おおざっぱにいうと$Y_n$上の層とその間の$\Hom$空間の次元が、$T_n$上の曲線とその交差数に対応する。
+より正確には、以下が成り立つ。
+\begin{theorem}[\cite{2020arXiv201108288O}]
+	\begin{enumerate}
+		\item シフト関手$[1]$とホモトピーによる違いを除いて、以下のものが1体1対応する。\begin{itemize}
+			      \item $D^b(Y_n)$の直既約対象$F$の同型類
+			      \item $T_n$上の曲線$\gamma$とその上の直既約$\bC$局所系$V$の組
+		      \end{itemize}
+		\item (1)の対応で$E,F$と$(\gamma_E, V_E), (\gamma_E, V_F)$が対応し、$E$または$F$がperfectで$\dim V_E = \dim V_F = 1$を満たすとする。このとき\begin{equation}
+			      \sum_{i}\dim\Ext^i(E, F) = \#(\gamma_E \cap \gamma_F)
+		      \end{equation}が成り立つ。
+	\end{enumerate}
+\end{theorem}
+さらにこの対応を用いると、$D^b(Y_n)$の自己同値群について
+（楕円曲線の場合と似た）以下の記述が得られる。
+\begin{theorem}\cite[Theorem D]{2020arXiv201108288O}
+	完全列
+	\begin{equation}
+		1 \to \Aut^0(Y_n) \times \Pic^0(Y_n)\times \bZ[1] \to \Auteq{D^b(Y_n)} \xrightarrow{\Upsilon} \MCG(T_n) \to 1
+	\end{equation}
+	が存在する。
+	ここで$\Upsilon$はミラー対称性による対応と以下の意味で整合的である。
+	\begin{itemize}
+		\item $\Phi \in \Auteq{D^b(Y_n)}$と直既約な$F \in D^b(Y_n)$について、$\Upsilon(\Phi)$は$F$に対応する曲線を$\Phi(F)$に対応する曲線に写す。
+	\end{itemize}
+\end{theorem}
+さらに$\Upsilon$によって、球面対象$F$に付随する捻り関手$T_F$が曲線$\gamma_F$に付随するDehn捻りに写されることもわかる。
 \section{半捻り関手}
-
+\begin{theorem}
+	$\pi \colon X \to T$を非特異凖射影多様体の間の平坦射とし、$i \colon Y = \pi^{-1}(0) \to X$をファイバーとする。
+	また$E \in D^b(Y)$を、$i_*E \in D^b(X)$が球面対象になるような対象とする。
+	このとき以下の図式を（自然同型の違いを除いて）可換にするような同値$H_E \colon D^b(Y) \to D^b(Y)$が一意に存在する。
+	\begin{equation}
+		\begin{tikzcd}
+			D^b(Y) \arrow[r,"i_*"]\arrow[d, "H_E"'] & D^b(X) \arrow[d,"T_{i_*E}"]\\
+			D^b(Y) \arrow[r, "i_*"]& D^b(X).
+		\end{tikzcd}
+	\end{equation}
+\end{theorem}
 \section{楕円曲面の自己同値群}
-
-
+以上の半捻り関手を利用して、あるクラスの楕円曲面の自己同値群の記述を与えることができる。
+まず\cite{MR3568337}による以下の結果がある。
+\begin{theorem}[\cite{MR3568337}]
+	\begin{itemize}
+		\item $\pi \colon S \to C$を相対的極小な楕円曲面とし、
+		\item 小平次元$\kappa(S)$は$0$ではなく、
+		\item $\pi$の可約ファイバーは$\rm{I}_n$型（$n \geq 2$）で重複ファイバーでないとする。
+	\end{itemize}
+	さらに部分群$B \subset \Auteq{D^b(S)}$を
+	\begin{equation}
+		B = \langle T_{\cO_G(a)} \mid G \subset S \text{: $(-2)$-曲線, } a \in \bZ \rangle
+	\end{equation}
+	と定義する。
+	このとき完全列
+	\begin{align}
+		1 \to \langle B, (-)\otimes \cO_S(D)\mid D.F=0, F \textrm{: ファイバー} \rangle & \rtimes \Aut{S} \times \bZ[2]                      \\
+		                                                                                & \to \Auteq{D^b(S)} \xrightarrow{\Theta} \SL(2,\bZ)
+	\end{align}
+	が存在する。
+\end{theorem}
+\cite{MR3568337}ではさらに$\Theta$の像の特徴づけも与えてられている。
+よってこのような楕円曲面に対しては$\Auteq D^b(S)$の構造は$B$の構造の研究に帰着されることになる。
+\begin{theorem}
+	$\pi \colon S \to C$の可約ファイバー全体を$Y_{n_1}, \dots, Y_{n_l}$とする。
+	ここで$Y_{n_j}$は$\rm{I}_{n_j}$型だとする。
+	このとき次の完全列が存在する。
+	\begin{equation}
+		1 \to \langle (-)\otimes \cO_S(Y_{n_j}) \mid j = 1, \dots, l\rangle \to B \to \prod_{j=1}^l \MCG(T_{n_j}).
+	\end{equation}
+\end{theorem}
 \bibliographystyle{amsalpha}
 \bibliography{half_twist}
 \end{document}
