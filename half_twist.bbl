@@ -17,6 +17,11 @@ Yank{\i} Lekili and Alexander Polishchuk, \emph{Arithmetic mirror symmetry for
   genus 1 curves with {$n$} marked points}, Selecta Math. (N.S.) \textbf{23}
   (2017), no.~3, 1851--1907. \MR{3663596}
 
+\bibitem[Muk81]{MR607081}
+Shigeru Mukai, \emph{Duality between {$D(X)$} and {$D(\hat X)$} with its
+  application to {P}icard sheaves}, Nagoya Math. J. \textbf{81} (1981),
+  153--175. \MR{607081}
+
 \bibitem[{Opp}20]{2020arXiv201108288O}
 Sebastian {Opper}, \emph{{Spherical objects, transitivity and auto-equivalences
   of Kodaira cycles via gentle algebras}}, arXiv e-prints (2020),
@@ -30,6 +35,11 @@ D.~O. Orlov, \emph{Equivalences of derived categories and {$K3$} surfaces},
 \bysame, \emph{Derived categories of coherent sheaves on abelian varieties and
   equivalences between them}, Izv. Ross. Akad. Nauk Ser. Mat. \textbf{66}
   (2002), no.~3, 131--158. \MR{1921811}
+
+\bibitem[ST01]{MR1831820}
+Paul Seidel and Richard Thomas, \emph{Braid group actions on derived categories
+  of coherent sheaves}, Duke Math. J. \textbf{108} (2001), no.~1, 37--108.
+  \MR{1831820}
 
 \bibitem[Ueh16]{MR3568337}
 Hokuto Uehara, \emph{Autoequivalences of derived categories of elliptic
