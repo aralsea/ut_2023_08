@@ -194,12 +194,12 @@ $X, Y$を非特異射影多様体とし、$p_X \colon X\times Y \to X, p_Y \colo
 \begin{remark}
 	Fourier--向井関手という名前は
 	\begin{enumerate}
-		\item 対象の対応$\Phi^P(F) = p_{Y*}(p_X^*F \otimes P)$がFourier変換$\cF(f)(\xi) = \int_\bR f(x)\exp(-ix\xi)dx$と似たかたちをしていること、
+		\item 対象の対応$\Phi^P(F) = p_{Y*}(p_X^*F \otimes P)$がFourier変換$\cF(f)(\xi) = \int_\bR f(x)\exp(-ix\xi)dx$と似た形をしていること、
 		\item 向井\cite{MR607081}によって導入され、導来同値だが同型でない多様体の初めての例の構成に使用されたこと
 	\end{enumerate}
 	に由来する。
 \end{remark}
-SeidelとThomasは\cite{MR1831820}において導来圏の自己同値の構成法として捻り関手を導入した。
+さらにSeidelとThomasは\cite{MR1831820}において、導来圏の自己同値の構成法である捻り関手の概念を導入した。
 \begin{theorem}
 	$X$を非特異射影多様体とする。
 	また$E \in D^b(X)$を球面対象、すなわち\begin{equation}
@@ -222,7 +222,10 @@ Lagrange球面$S^n \subset M$の$D^b(\Fuk M)$での自己準同型環は
 となり、Floerコホモロジー$HF^*(S^n, S^n)$は球面のコホモロジー$H^*(S^n, \bR)$と同型である。
 
 \begin{example}
-	$S$を代数曲面とし、$\bP^1 \cong C \subset S$を$(-2)$-曲線とする。このとき$C$上の次数$a \in \bZ$の直線束$\cO_C(a)$を$S$上の層とみたものは、（Riemann--Rochの定理より）$D^b(S)$の球面対象である。
+	\begin{enumerate}
+		\item $E$を楕円曲線とすると、$\cO_E$は$D^b(E)$の球面対象である。これによる捻り関手$T_{\cO_E}$は標準的な自己同値ではない自己同値の例を与える。
+		\item $S$を代数曲面とし、$\bP^1 \cong C \subset S$を$(-2)$-曲線とする。このとき$C$上の次数$a \in \bZ$の直線束$\cO_C(a)$を$S$上の層とみたものは、（Riemann--Rochの定理より）$D^b(S)$の球面対象である。
+	\end{enumerate}
 \end{example}
 \section{小平ファイバーのミラー対称性と写像類群}
 楕円曲面$\pi \colon S \to C$の特異ファイバーとして現れうる曲線は小平とNeronによりADE型のアファインDynkin図形を用いて分類されている。
@@ -236,7 +239,8 @@ $Y_n$を$\rm{I}_n$型（$n \geq 2$）の小平ファイバーとすると、そ�
 \begin{theorem}\cite{MR3663596}
 	$\cW(T_n)$を$T_n$の巻深谷圏とすると、$\bC$線形三角圏の同値$D^b(Y_n) \cong D^b(\cW(T_n))$が存在する。
 \end{theorem}
-これにより、おおざっぱにいうと$Y_n$上の層とその間の$\Hom$空間の次元が、$T_n$上の曲線とその交差数に対応する。
+
+本稿では深谷圏についての詳しい議論は行わないが、この同値によりおおざっぱにいうと$Y_n$上の層とその間の$\Hom$空間の次元が、$T_n$上の曲線とその交差数に対応する。
 より正確には、以下が成り立つ。
 \begin{theorem}[\cite{2020arXiv201108288O}]
 	\begin{enumerate}
@@ -249,9 +253,97 @@ $Y_n$を$\rm{I}_n$型（$n \geq 2$）の小平ファイバーとすると、そ�
 		      \end{equation}が成り立つ。
 	\end{enumerate}
 \end{theorem}
+以下直既約対象$F \in D^b(Y_n)$に対応する曲線を$\gamma_F$で表す。
 対象の対応には例えば以下のようなものがある。
 \begin{example}
-	直既約対象の対応
+	$n=3$とする。$Y_3$の既約成分を$G_1, G_2, G_3$とし、それらの上にある非特異閉点を$x_1, x_2, x_3$とする。
+	このとき直既約対象$\cO_{Y_3}, \cO_{G_1}, \cO_{G_1}(-1), \cO_{x_1}$などに対応する$T_3$上の曲線は以下の図のような曲線である。
+	ただし白い丸は$T_3$の$3$つの穴を表す。
+	\begin{displaymath}
+		\begin{tikzpicture}[scale = 0.4]
+			% fiber
+			\draw(-10, 8) node{$Y_3$};
+			\draw[thick] (-9,-1)--(-3,8);
+			\draw[thick] (-10,0)--(2,0);
+			\draw[thick] (1,-1)--(-5,8);
+
+			% points
+			\filldraw[black] (-6, 3.5) circle (4pt);
+			\filldraw[black] (-4, 0) circle (4pt);
+			\filldraw[black] (-2, 3.5) circle (4pt);
+
+			\draw(-6, 3.5) node[left]{$x_1$};
+			\draw(-4, 0) node[below]{$x_2$};
+			\draw(-2, 3.5) node[right]{$x_3$};
+
+			% components
+			\draw(-7, 2) node[left]{$G_1$};
+			\draw(-2, 0) node[below]{$G_2$};
+			\draw(-3, 5) node[right]{$G_3$};
+
+			% big square
+			\draw(22, 8) node{$T_3$};
+			\draw[dashed] (5,0)--(20,0);
+			\draw(14.75, 0) node{$>$};
+			\draw[dashed] (5,0)--(5,8);
+			\draw(5, 6) node{\rotatebox{90}{$>>$}};
+			\draw[dashed] (5,8)--(20,8);
+			\draw(14.75, 8) node{$>$};
+			\draw[dashed] (20,0)--(20,8);
+			\draw(20, 6) node{\rotatebox{90}{$>>$}};
+
+			% horizontal lines
+			\draw[ultra thick] (5, 1)--(20, 1);
+			\draw[ultra thick] (5, 4)--(20, 4);
+			\draw(5, 1) node[left]{$\gamma_{\cO_{Y_3}}$};
+			% \draw[thick] (3, 2)--(5, 2);
+			% \draw[thick] (9, 2)--(11, 2);
+
+			% \draw[thick] (0, 0.5)--(11, 0.5);
+
+			% vertical lines
+			\draw[ultra thick] (8+1, 0)--(8+1, 8);
+			\draw(8+1, 8) node[above]{$\gamma_{\cO_{x_1}}$};
+			\draw[ultra thick] (12.5+1, 0)--(12.5+1, 8);
+			\draw(12.5, 8) node[above]{$\gamma_{\cO_{x_2}}$};
+			\draw[ultra thick] (17+1, 0)--(17+1, 8);
+			\draw(17+1, 8) node[above]{$\gamma_{\cO_{x_3}}$};
+
+			% curves
+			\draw[ultra thick] (8, 4) to[out=-30,in=90] (10.25, 0);
+			\draw[ultra thick] (10.25, 8) to[out=-90,in=150] (12.5, 4);
+			\draw(10.25, 0) node[below]{$\gamma_{\cO_{G_1}}$};
+			% punctures
+			\foreach \u in {8, 12.5, 17}
+				{
+					\filldraw[white] (\u, 4) circle (6pt);
+					\draw[black] (\u, 4) circle (6pt);
+				}
+
+			% O_G(-1)
+			\draw[dashed, -{Stealth[length=3mm]}] (7, -1) to[out=90, in=-90] (10.25, 3.75);
+			\draw(7, -1) node[below]{$\gamma_{\cO_{G_1}(-1)}$};
+			\draw[dashed, -{Stealth[length=3mm]}] (13.5, -1) to[out=90, in=-90] (14.75, 3.75);
+			\draw(13.5, -1) node[below]{$\gamma_{\cO_{G_2}(-1)}$};
+			\draw[dashed, -{Stealth[length=3mm]}] (18.5, -1) to[out=90, in=-90] (19, 3.75);
+			\draw(19, -1) node[below]{$\gamma_{\cO_{G_3}(-1)}$};
+
+			% % notations
+			% \draw(0, 0.5) node[left]{$\gamma_{\cO_Y}$};
+			% \draw(2, 4) node[above]{$\gamma_{\cO_{x_1}}$};
+			% \draw(4, 4) node[above]{$\gamma_{\cO_{x_2}}$};
+			% \draw(10, 4) node[above]{$\gamma_{\cO_{x_n}}$};
+
+			% \draw(2, 3) node[above left]{$\gamma_{\cO_{G_1}(-1)}$};
+			% \draw(1, 3) to[out=-90,in=135](1.5, 2);
+			% \draw(4, 3) node[above left]{$\gamma_{\cO_{G_2}(-1)}$};
+			% \draw(3, 3) to[out=-90,in=135](3.5, 2);
+
+			% \draw(11, 2) node[right]{$\gamma_{\cO_{G_n}(-1)}$};
+
+		\end{tikzpicture}
+	\end{displaymath}
+
 \end{example}
 さらにこの対応を用いると、$D^b(Y_n)$の自己同値群について
 （楕円曲線の場合と似た）以下の記述が得られる。
@@ -269,9 +361,12 @@ $Y_n$を$\rm{I}_n$型（$n \geq 2$）の小平ファイバーとすると、そ�
 	\end{itemize}
 \end{theorem}
 さらに$\Upsilon$によって、球面対象$F$に付随する捻り関手$T_F$が曲線$\gamma_F$に付随するDehn捻りに写されることもわかる。
-\section{半捻り関手}
-上述のように、捻り関手はミラー対称性のもとでDehn捻りの対応物を与える。
-では半捻りの対応物がなにかを問うのは自然な疑問である。
+
+\section{主結果}
+% 上述のように、捻り関手はミラー対称性のもとでDehn捻りの対応物を与える。
+% では半捻りの対応物がなにかを問うのは自然な疑問である。
+
+本稿の主結果を述べる。1つ目は捻り関手の制限についてのものである。
 \begin{theorem}
 	$\pi \colon X \to T$を非特異凖射影多様体の間の平坦射とし、$i \colon Y = \pi^{-1}(0) \to X$をファイバーとする。
 	また$E \in D^b(Y)$を、$i_*E \in D^b(X)$が球面対象になるような対象とする。
@@ -283,18 +378,35 @@ $Y_n$を$\rm{I}_n$型（$n \geq 2$）の小平ファイバーとすると、そ�
 		\end{tikzcd}
 	\end{equation}
 \end{theorem}
+\begin{proof}
+	積分核$P \in D^b(X \times X)$が$D^b(X \times_T X)$の対象の順像となっているようなFourier--向井関手$\Phi^P$を、相対Fourier--向井関手という。
+	その一般論によって、相対Fourier--向井関手はファイバーの導来圏の間の関手に制限できることが知られている。
 
+	よって捻り関手$T_{i_*E}$の積分核$P = \Cone((i_*E)^\vee \boxtimes i_*E \xrightarrow{\ev} \cO_{\Delta_X})$が$D^b(X \times_T X)$の対象の順像になっていることを示せばよく、それは\cite{MR2200048}の議論を参考にすることで具体的に構成できる。
+\end{proof}
+この定理は、ファイバーからくるような球面対象による捻り関手が、自然にファイバーに「制限」できるということを意味している。
+そしてこれを楕円曲面$S$の可約ファイバーの既約成分として現れる$(-2)$-曲線に適用することで、半捻りの類似であるような関手が得られる。
 \begin{theorem}
 	$\pi \colon S \to C$を楕円曲面とし、$Y_n \subset S$を$\rm{I}_n$型小平ファイバーとする。
-	$G \subset Y_n$が$Y_n$の既約成分のとき、半捻り関手$H_{\cO_G(a)} \in \Auteq D^b(Y_n)$は$\Upsilon \colon \Auteq D^b(Y_n) \to \MCG(T_n)$によって$\gamma_{\cO_G(a)}$に付随する半捻りに写像される。
+	$G \subset Y_n$が$Y_n$の既約成分のとき、関手$H_{\cO_G(a)} \in \Auteq D^b(Y_n)$は$\Upsilon \colon \Auteq D^b(Y_n) \to \MCG(T_n)$によって$\gamma_{\cO_G(a)}$に付随する半捻りに写像される。
 \end{theorem}
+\begin{proof}
+	$\Phi = H_{\cO_G(a)}$とおく。
+	Dehn--Nielsen--Baerの定理によって、$\MCG(T_n)$の元は$\pi_1(T_n)$への自然な作用により決定される。
+	さらに$\pi_1(T_n)$は曲線$\gamma_\cO, \gamma_{\cO_{x_1}}, \dots, \gamma_{\cO_{x_n}}$によって生成されるから、$\Upsilon(\Phi)$がこれらの曲線をどう動かすかを観察すればよい。
+
+	$\Upsilon$の満たすミラー対称性との整合性より、これらの曲線の像はそれぞれ直既約対象$\Phi(\cO), \Phi(\cO_{x_1}), \dots, \Phi(\cO_{x_n}) \in D^b(Y_n)$に対応する曲線となる。
+	さらにミラー対称性により、これらの曲線と他の曲線との交点数は導来圏$D^b(Y_n)$での$\Hom$空間の次元と等しいため、ホモロジー代数の基本的な方法で計算できる。
+	これにより十分多くの交点数の情報を集めることで、これらの曲線を特定することができ、実際に半捻りと同じ作用を受けていることがわかる。
+\end{proof}
 \section{楕円曲面の自己同値群}
-以上の半捻り関手を利用して、あるクラスの楕円曲面の自己同値群の記述を与えることができる。
+以上の「半捻り関手」を利用して、あるクラスの楕円曲面の自己同値群の記述を与えることができる。
 まず\cite{MR3568337}による以下の結果がある。
 \begin{theorem}[\cite{MR3568337}]
 	\begin{itemize}
 		\item $\pi \colon S \to C$を相対的極小な楕円曲面とし、
 		\item 小平次元$\kappa(S)$は$0$ではなく、
+		\item $\pi$の可約ファイバーはすべて$\rm{I}_n$型（$(n \geq 2)$）で、重複ファイバーではないとする。
 	\end{itemize}
 	さらに部分群$B \subset \Auteq{D^b(S)}$を
 	\begin{equation}
@@ -309,9 +421,8 @@ $Y_n$を$\rm{I}_n$型（$n \geq 2$）の小平ファイバーとすると、そ�
 	が存在する。
 \end{theorem}
 \cite{MR3568337}はさらに$\Theta$の像の特徴づけも与えている。
-よってこのような楕円曲面に対しては$\Auteq D^b(S)$の構造は可約ファイバーの寄与を表す群$B$の構造の研究に帰着されることになる。
-
-半捻り関手の定義を使うと$B$をファイバーの導来圏の自己同値群と結びつけて考えることができ、ミラー対称性と合わせて以下の結果を得る。
+よってこのような楕円曲面に対しては、$\Auteq D^b(S)$の構造は可約ファイバーの寄与を表す群$B$の構造の研究に帰着されることになる。
+これに対し半捻り関手の定義を使うと$B$をファイバーの導来圏の自己同値群と結びつけて考えることができ、ミラー対称性と合わせて以下の結果を得る。
 \begin{theorem}
 	$\pi \colon S \to C$の可約ファイバー全体を$Y_{n_1}, \dots, Y_{n_l}$とする。
 	ここで$Y_{n_j}$は$\rm{I}_{n_j}$型だとする。
