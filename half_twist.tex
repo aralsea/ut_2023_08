@@ -5,18 +5,18 @@
 \usepackage{here}
 \usepackage{bm}
 
+\numberwithin{equation}{section}
+\mathtoolsset{showonlyrefs=true}
 \renewcommand{\theenumi}{\arabic{enumi}}
 \renewcommand{\labelenumi}{(\theenumi) }
 \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
 %% Theorems
-\theoremstyle{plain}
+\theoremstyle{definition}
 \newtheorem{theorem}{定理}[section]
 \newtheorem{conjecture}[theorem]{予想}
 \newtheorem{lemma}[theorem]{補題}
 \newtheorem{proposition}[theorem]{命題}
 \newtheorem{corollary}[theorem]{系}
-
-\theoremstyle{definition}
 \newtheorem{definition}[theorem]{定義}
 \newtheorem{example}[theorem]{例}
 \newtheorem{remark}[theorem]{補足}
@@ -77,7 +77,7 @@
 
 \title{代数多様体の導来圏の半捻り関手}
 \author{荒井 勇人（東大数理）\thanks{hayato@ms.u-tokyo.ac.jp}}
-
+\date{}
 \begin{document}
 \maketitle
 
@@ -92,7 +92,7 @@
 \section{導入}
 \subsection{代数多様体の導来圏とホモロジー的ミラー対称性}
 $X$を代数多様体とする。
-$X$の（連接層の）導来圏$D^b(X)$とは、以下のようにして構成される圏である。
+$X$の\textbf{（連接層の）導来圏}$D^b(X)$とは、以下のようにして構成される圏である。
 
 まず$X$上の連接層の有界な複体のなすアーベル圏を$\Ch^b(\coh X)$とする。
 \begin{equation}
@@ -139,7 +139,7 @@ $X$の連接層の導来圏$D^b(X)$とは、$\Ch^b(\coh X)$を擬同型全体で
 
 次にミラー対称性とは、ある空間$X$の代数幾何学と別の空間$Y$のシンプレクティック幾何学の間に物理学の超弦理論に由来する不思議な関係があるという現象である。
 この結び付きは例えば$X$内の有理曲線の数え上げ問題を$Y$の周期積分に帰着して解決するなど、それまでの代数幾何学にはない、物理学のアイデアに基づく新たな進展をもたらしてきた。
-その背後にあるとされる最も強力な予想の1つが、Kontsevichの提唱したホモロジー的ミラー対称性である。
+その背後にあるとされる最も強力な予想の1つが、Kontsevichの提唱した\textbf{ホモロジー的ミラー対称性}である。
 \begin{conjecture}
 	Calabi--Yau多様体$X$に対し別のCalabi--Yau多様体$Y$が存在して、$X$の連接層の導来圏$D^b (X)$と$Y$の深谷圏の導来圏$D^b \Fuk(Y)$が（強化）三角圏として同値になる。
 \end{conjecture}
@@ -147,7 +147,7 @@ $X$の連接層の導来圏$D^b(X)$とは、$\Ch^b(\coh X)$を擬同型全体で
 例えば$X$が楕円曲線$E$の場合、そのミラー$Y$はトーラス$T$であり、$E$およびその閉点$x \in E$の構造層$\cO_E, \cO_x \in D^b(E)$がそれぞれ$T$上の緯線と経線に対応する（$T$上の曲線はLagrange部分多様体である）。
 このようにミラー対称性はまったく異なる種類の幾何学が等価であることを主張する非常に深い現象・予想であり、その背後には導来圏が現れる。
 \begin{example}
-	楕円曲線とトーラスのミラー対称性において、$\cO_E, \cO_x \in D^b(E)$は$T$上の曲線$\alpha, \beta \in D^b \Fuk(T)$に対応する。$\sum_i \dim \Hom_{D^b(E)}(\cO_E, \cO_x)=1$と$\# (\alpha \cap \beta) = 1$が一致していることは射の対応の帰結である。
+	楕円曲線とトーラスのミラー対称性において、$\cO_E, \cO_x \in D^b(E)$は$T$上の曲線$\alpha, \beta \in D^b \Fuk(T)$に対応する。$\sum_i \dim \Hom_{D^b(E)}^i(\cO_E, \cO_x)=1$と$\# (\alpha \cap \beta) = 1$が一致していることは射の対応の帰結である。
 	\begin{displaymath}
 		\begin{tikzpicture}[samples=300]
 			% elliptic curve E
@@ -225,7 +225,7 @@ $X$の連接層の導来圏$D^b(X)$とは、$\Ch^b(\coh X)$を擬同型全体で
 さらに$A(X)$の$\theta$による像を具体的に計算することで、楕円曲線の場合には実際に$A(X) \subsetneq \Auteq D^b(X)$となっていることがわかる。
 $A(X)$に入らない自己同値は後述する捻り関手によって得られる。
 
-以上の結果がある一方で、それらの適用範囲を除くと導来圏の自己同値群の詳細な記述が得られている多様体の例はそれほど多くはない。
+以上の結果がある一方で、これらの適用範囲を除くと導来圏の自己同値群の詳細な記述が得られている多様体はそれほど多くはない。
 1次元の場合は上記の2つの定理によってすべて理解できているが、2次元の場合定理\ref{BO}の適用できない$K3$曲面や楕円曲面などについては部分的にしかわかっておらず、高次元では結果はさらに少ない。
 
 また導来圏の自己同値はミラー対称性を通じて深谷圏の自己同値と結びつく。
@@ -233,13 +233,13 @@ $A(X)$に入らない自己同値は後述する捻り関手によって得ら�
 これにより$Y$のシンプレクティック写像類群の作用を$X$側にもってきたときに、$X$の幾何の観点から見て非自明なものが現れうる。
 その一例が次に述べるSeidel--Thomasによる捻り関手である。
 \subsection{Fourier--向井関手と捻り関手}
-Fourier--向井関手（積分関手）とは、積分核と呼ばれる$X \times Y$の導来圏の対象$P \in D^b(X \times Y)$から構成される関手$\Phi^P =\Phi^P_{X \to Y}\colon D^b(X) \to D^b(Y)$である。
+Fourier--向井関手（積分関手）とは、$X \times Y$の導来圏の対象$P \in D^b(X \times Y)$から以下のようにして構成される関手$\Phi^P =\Phi^P_{X \to Y}\colon D^b(X) \to D^b(Y)$である。
 $X, Y$を非特異射影多様体とし、$p_X \colon X\times Y \to X, p_Y \colon X \times Y \to Y$を射影とする。
 このとき、$P \in D^b(X \times Y)$に対し関手
 \begin{equation}
 	\Phi^P_{X \to Y} \colon D^b(X) \xrightarrow{p_X^*} D^b(X \times Y) \xrightarrow{ - \otimes P} D^b(X \times Y) \xrightarrow{p_{Y*}} D^b(Y)
 \end{equation}
-を$P$を積分核とするFourier--向井関手と呼ぶ。
+を$P$を積分核とする\textbf{Fourier--向井関手}と呼ぶ。
 ここで$p_X^*, p_{Y*}, - \otimes P$はそれぞれ逆像、順像、テンソル積（の導来関手）を意味する。
 
 以下の定理より、Fourier--向井関手は導来圏の間の関手、特に同値を調べる上で基本的な道具となる。
@@ -258,14 +258,14 @@ $X, Y$を非特異射影多様体とし、$p_X \colon X\times Y \to X, p_Y \colo
 さらにSeidelとThomasは\cite{MR1831820}において、導来圏の自己同値の構成法である捻り関手の概念を導入した。
 \begin{theorem}[\cite{MR1831820}]
 	$X$を非特異射影多様体とする。
-	また$E \in D^b(X)$を球面対象、すなわち\begin{equation}
+	また$E \in D^b(X)$を\textbf{球面対象}、すなわち\begin{equation}
 		E \otimes \omega_X \cong E,\quad \Hom^i(E, E) = \begin{cases}
 			\bC & i = 0, \dim X,    \\
 			0   & \text{otherwise.}
 		\end{cases}
 	\end{equation}を満たすものとする。
 	このとき$P = \Cone(E^\vee \boxtimes E \xrightarrow{\ev} \cO_\Delta) \in D^b(X \times X)$を積分核とするFourier--向井関手$\Phi^P$は圏同値である。
-	これを球面対象$E$に付随する（球面）捻り関手といい、$T_E$と書く。
+	これを球面対象$E$に付随する\textbf{（球面）捻り関手}といい、$T_E$と書く。
 \end{theorem}
 \begin{corollary}
 	$E \in D^b(X)$を球面対象とすると、任意の$F \in D^b(X)$について完全三角形
@@ -278,16 +278,16 @@ $X, Y$を非特異射影多様体とし、$p_X \colon X\times Y \to X, p_Y \colo
 Seidelによる一般化Dehn捻り\cite{MR1743463}は、シンプレクティック多様体$M$の中のLagrange球面$S^n$に付随して定義されていた。
 捻り関手を一言で表すと、一般化Dehn捻りのミラー対称性のもとでの対応物である。
 もう少し詳しく述べると、
-Lagrange球面$S^n \subset M$の（導来深谷圏$D^b\Fuk M$の対象としての）自己準同型環は
+Lagrange球面$S^n \subset M$の（導来深谷圏$D^b\Fuk(M)$の対象としての）自己準同型環は
 \begin{align}
-	\Hom_{D^b\Fuk M}^*(S^n, S^n) & = HF^*(S^n, S^n)\otimes_\bR \bC
+	\Hom_{D^b\Fuk(M)}^*(S^n, S^n) & = HF^*(S^n, S^n)\otimes_\bR \bC
 \end{align}
 となり、Floerコホモロジー$HF^*(S^n, S^n)$は球面のコホモロジー$H^*(S^n, \bR)$と同型である。
 よって、球面対象の2つ目の条件$$\Hom^i(E, E) = \begin{cases}
 		\bC & i = 0, \dim X,    \\
 		0   & \text{otherwise.}
 	\end{cases}$$は$E$の自己準同型環がLagrange球面$S^n$のそれと等しいことを意味する。
-さらにSeidelによる同時期の仕事\cite{MR1978046}によって、\eqref{eq:twist}と同様の完全三角形が導来深谷圏へのDehn捻りにおいても成り立つことが示されている。
+さらにSeidelによる同時期の仕事\cite{MR1978046}によって、\eqref{eq:twist}と同様の完全三角形が導来深谷圏でのDehn捻りにおいても成り立つことが示されている。
 そこでこれらの球面とDehn捻りの性質をもとに代数的に定義されたのが捻り関手である。
 \begin{example}
 	\begin{enumerate}
@@ -296,7 +296,7 @@ Lagrange球面$S^n \subset M$の（導来深谷圏$D^b\Fuk M$の対象として�
 	\end{enumerate}
 \end{example}
 \section{小平ファイバーのミラー対称性と写像類群}
-楕円曲面$\pi \colon S \to C$の特異ファイバーとして現れうる曲線は小平とNeronによりADE型のアファインDynkin図形を用いて分類されている。
+楕円曲面$\pi \colon S \to C$の特異ファイバーとして現れうる曲線は小平と N\'{e}ronによりADE型のアファインDynkin図形を用いて分類されている。
 これらの曲線を小平ファイバーと呼ぶ。
 例えば$\rm{I}_n$型と呼ばれる曲線は$n$本の$\bP^1$が$n$角形のかたちに交わってできる特異曲線であり、アファイン$A_n$型Dynkin図形に対応する。
 
