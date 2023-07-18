@@ -7,6 +7,10 @@
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{{Opp}20}
 
+\bibitem[{Ara}23]{2023arXiv230212501A}
+Hayato {Arai}, \emph{{Half-spherical twists on derived categories of coherent
+  sheaves}}, arXiv e-prints (2023), arXiv:2302.12501.
+
 \bibitem[BO01]{MR1818984}
 Alexei Bondal and Dmitri Orlov, \emph{Reconstruction of a variety from the
   derived category and groups of autoequivalences}, Compositio Math.
@@ -40,6 +44,14 @@ D.~O. Orlov, \emph{Equivalences of derived categories and {$K3$} surfaces},
 \bysame, \emph{Derived categories of coherent sheaves on abelian varieties and
   equivalences between them}, Izv. Ross. Akad. Nauk Ser. Mat. \textbf{66}
   (2002), no.~3, 131--158. \MR{1921811}
+
+\bibitem[Sei99]{MR1743463}
+Paul Seidel, \emph{Lagrangian two-spheres can be symplectically knotted}, J.
+  Differential Geom. \textbf{52} (1999), no.~1, 145--171. \MR{1743463}
+
+\bibitem[Sei03]{MR1978046}
+\bysame, \emph{A long exact sequence for symplectic {F}loer cohomology},
+  Topology \textbf{42} (2003), no.~5, 1003--1063. \MR{1978046}
 
 \bibitem[ST01]{MR1831820}
 Paul Seidel and Richard Thomas, \emph{Braid group actions on derived categories
